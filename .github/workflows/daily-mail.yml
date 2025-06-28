@@ -1,0 +1,11 @@
+name: Hourly Weather Email
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour, on the hour (UTC)
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          curl -X POST "https://mourfyorwktimabrrvxb.supabase.co/functions/v1/daily-weather-email"

@@ -1,12 +1,13 @@
 name: Hourly Weather Email
 on:
- schedule:
-   - cron: '0 * * * *'
- workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'  # Every hour, on the hour (UTC)
+  workflow_dispatch:
 jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
       - name: Call Supabase Edge Function
         run: |
-          curl -X POST "https://mourfyorwktimabrrvxb.supabase.co/functions/v1/daily-weather-email"
+          curl -X POST "https://mourfyorwktimabrrvxb.supabase.co/functions/v1/daily-weather-email" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"

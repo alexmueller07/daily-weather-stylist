@@ -1,7 +1,8 @@
 name: Hourly Weather Email
 on:
-  schedule:
-    - cron: '0 * * * *'  # Every hour, on the hour (UTC)
+ schedule:
+   - cron: '0 * * * *'
+ workflow_dispatch:
 jobs:
   trigger:
     runs-on: ubuntu-latest
